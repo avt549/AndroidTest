@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 
 public class SelenideWebDriver implements WebDriverProvider {
 
@@ -26,6 +27,7 @@ public class SelenideWebDriver implements WebDriverProvider {
     options.setPlatformName("Android");
     options.setDeviceName("test2_API_28");
     options.setPlatformVersion("9.0");
+    options.setNewCommandTimeout(Duration.ofSeconds(60));
     options.setApp("/home/andrey/java/appiumTestProject-2/appiumTestProject/build/app-debug.apk");
 
     try {

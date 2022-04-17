@@ -1,46 +1,37 @@
 package appTest;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 public class UserPageTest extends BaseTest{
 
-    @Test
-    public void openUserCardTest() {
-        waitElement(mainPage.usersAllCards);
-        mainPage.usersAllCards.get(0).click();
-        waitElement(userPage.contentDeskUSer);
-        userPage.clickButtonBack();
-    }
 
-    @Test
-    public void checkHeader() {
-        waitElement(mainPage.usersAllCards);
-        mainPage.usersAllCards.get(0).click();
-        waitElement(userPage.contentDeskUSer);
-        userPage.checkThatElementContainsTest("User screen");
-        userPage.clickButtonBack();
+    @Test(testName="проверка отображения заголовка",
+            description = "проверка отображения заголовка")
+    public void checkHeaderTest() {
+
+        mainPage.clickOnCard()
+        .checkThatElementContainsTest("User screen")
+        .clickButtonBack();
 
     }
-    @Test
-    public void checkUserInformation() {
-        waitElement(mainPage.usersAllCards);
-        mainPage.usersAllCards.get(0).click();
-        waitElement(userPage.contentDeskUSer);
-        userPage.checkThatElementContainsTest("Иванов Иван Иванович");
-        userPage.checkThatElementContainsTest("Тестировщик ПО");
-        userPage.checkThatElementContainsTest("СПБГУ");
-        userPage.checkThatElementContainsTest("Санкт-Петербург");
-        userPage.clickButtonBack();
+    @Test(testName="проверка отображения информации о пользователе",
+            description = "проверка отображения информации о пользователе")
+    public void checkUserInformationTest() {
+        mainPage.clickOnCard().
+        checkThatElementContainsTest("Иванов Иван Иванович").
+        checkThatElementContainsTest("Тестировщик ПО").
+        checkThatElementContainsTest("СПБГУ").
+        checkThatElementContainsTest("Санкт-Петербург").
+        clickButtonBack();
     }
-    @Test
-    public void checkFields() {
-        waitElement(mainPage.usersAllCards);
-        mainPage.usersAllCards.get(1).click();
-        waitElement(userPage.contentDeskUSer);
-        userPage.checkThatElementContainsTest("USER NAME");
-        userPage.checkThatElementContainsTest("USER GRADE");
-        userPage.checkThatElementContainsTest("USER SCHOOL NAME");
-        userPage.checkThatElementContainsTest("USER CITY");
-        userPage.clickButtonBack();
+    @Test(testName="проверка наличия всех полей",
+            description = "проверка наличия всех полей")
+    public void checkFieldsTest() {
+        mainPage.clickOnCard()
+        .checkThatElementContainsTest("USER NAME")
+        .checkThatElementContainsTest("USER GRADE")
+        .checkThatElementContainsTest("USER SCHOOL NAME")
+        .checkThatElementContainsTest("USER CITY")
+        .clickButtonBack();
     }
 }
